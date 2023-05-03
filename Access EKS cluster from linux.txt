@@ -1,0 +1,29 @@
+Accessing your EKS cluster from EC2 instance 
+
+1) Update your AWS CLI to 2.x version 
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+2) Install kubectl
+
+curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.7/2022-06-29/bin/linux/amd64/kubectl
+
+chmod +x ./kubectl
+
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+
+kubectl version --short --client
+
+
+3) AWS configure or roles
+
+
+4) Update/Create kubeconfig
+
+aws eks update-kubeconfig --region region-code --name my-cluster
+
+5) kubectl get svc ( to verify )
